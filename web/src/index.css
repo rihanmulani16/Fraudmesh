@@ -1,0 +1,237 @@
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap');
+
+:root {
+  /* Backgrounds */
+  --bg-deepest: #050810;
+  --bg-deep: #080c16;
+  --bg-base: #0d1117;
+  --bg-surface: #131a27;
+  --bg-elevated: #1a2332;
+  --bg-hover: #1f2d3f;
+  
+  /* Text */
+  --text-primary: #e6edf5;
+  --text-secondary: #8899aa;
+  --text-muted: #566577;
+  
+  /* Accent - Cyan/Teal */
+  --accent: #06b6d4;
+  --accent-bright: #22d3ee;
+  --accent-dim: #0891b2;
+  --accent-glow: rgba(6, 182, 212, 0.15);
+  --accent-glow-strong: rgba(6, 182, 212, 0.3);
+  
+  /* Alert - Red (ONLY for suspicious items) */
+  --alert: #ef4444;
+  --alert-dim: #dc2626;
+  --alert-glow: rgba(239, 68, 68, 0.15);
+  
+  /* Caution - Amber */
+  --caution: #f59e0b;
+  --caution-dim: #d97706;
+  --caution-glow: rgba(245, 158, 11, 0.15);
+  
+  /* Safe - Green */
+  --safe: #10b981;
+  --safe-dim: #059669;
+  --safe-glow: rgba(16, 185, 129, 0.15);
+  
+  /* Borders */
+  --border: #1e293b;
+  --border-bright: #334155;
+  
+  /* Bank Colors */
+  --bank-a: #3b82f6;
+  --bank-b: #8b5cf6;
+  --bank-c: #06b6d4;
+  --bank-d: #f59e0b;
+  --bank-e: #84cc16;
+  --bank-f: #ec4899;
+  
+  /* Fonts */
+  --font-ui: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
+  
+  /* Sizing */
+  --radius-sm: 4px;
+  --radius-md: 6px;
+  --radius-lg: 8px;
+}
+
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 14px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: var(--font-ui);
+  background: var(--bg-deep);
+  color: var(--text-primary);
+  line-height: 1.5;
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-base);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border-bright);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--text-muted);
+}
+
+/* Grid background pattern */
+.grid-bg {
+  background-image: 
+    linear-gradient(rgba(6, 182, 212, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(6, 182, 212, 0.03) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+/* Glow effects */
+.glow-border {
+  box-shadow: 0 0 0 1px var(--border), 0 0 20px var(--accent-glow), inset 0 0 20px var(--accent-glow);
+}
+
+.glow-border-alert {
+  box-shadow: 0 0 0 1px rgba(239, 68, 68, 0.3), 0 0 20px var(--alert-glow);
+}
+
+/* Panel styles */
+.panel {
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+}
+
+.panel-elevated {
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+}
+
+/* Utility */
+.mono {
+  font-family: var(--font-mono);
+}
+
+.text-accent {
+  color: var(--accent);
+}
+
+.text-alert {
+  color: var(--alert);
+}
+
+.text-caution {
+  color: var(--caution);
+}
+
+.text-safe {
+  color: var(--safe);
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 5px var(--accent-glow); }
+  50% { box-shadow: 0 0 20px var(--accent-glow-strong); }
+}
+
+@keyframes slideInRight {
+  from { opacity: 0; transform: translateX(20px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+.animate-in {
+  animation: fadeIn 0.3s ease-out;
+}
+
+/* Button base */
+button {
+  font-family: var(--font-ui);
+  cursor: pointer;
+  border: none;
+  outline: none;
+  transition: all 0.2s ease;
+}
+
+button:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+/* Input base */
+input, textarea, select {
+  font-family: var(--font-ui);
+  background: var(--bg-base);
+  color: var(--text-primary);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 8px 12px;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+input:focus, textarea:focus, select:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-glow);
+}
+
+/* Table base */
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th {
+  text-align: left;
+  padding: 10px 12px;
+  font-weight: 500;
+  color: var(--text-secondary);
+  border-bottom: 1px solid var(--border);
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+td {
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--border);
+  font-size: 0.9rem;
+}
+
+tr:hover {
+  background: var(--bg-hover);
+}
+
+/* Link styling */
+a {
+  color: var(--accent);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+a:hover {
+  color: var(--accent-bright);
+}
